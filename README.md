@@ -4,7 +4,8 @@
 
 ### 预览链接（部署后生效）
 
-- https://dengkeyun1-arch.github.io/dky/
+- https://dengkeyun1-arch.github.io/dky/ (GitHub Pages，可能需要几分钟)
+- https://raw.githack.com/dengkeyun1-arch/dky/main/index.html (即时预览，无需等待)
 
 ---
 
