@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>喜欢你</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#ffe6f0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+        .container{width:100%;max-width:400px;text-align:center}
+        .title{font-size:24px;color:#e91e63;margin-bottom:15px;font-weight:bold}
+        .card{background:white;border-radius:15px;padding:25px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+        .icon{font-size:32px;margin-bottom:15px}
+        .step-title{font-size:20px;font-weight:bold;margin-bottom:12px;color:#333}
+        .step-content{font-size:16px;color:#666;line-height:1.4;margin-bottom:20px}
+        .progress{height:5px;background:#f0f0f0;border-radius:3px;margin-bottom:20px;overflow:hidden}
+        .progress-bar{height:100%;background:#e91e63;width:25%}
+        .btn{width:100%;padding:12px;background:#e91e63;color:white;border:none;border-radius:10px;font-size:18px;font-weight:bold;cursor:pointer}
+        .success{display:none}
+        .success-title{font-size:22px;color:#4caf50;font-weight:bold;margin-bottom:15px}
+        .success-content{font-size:16px;color:#666;line-height:1.4;margin-bottom:20px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">喜欢你</div>
+        <div class="card" id="steps">
+            <div class="icon" id="icon">⭐</div>
+            <div class="step-title" id="title">遇见你</div>
+            <div class="step-content" id="content">从第一次见到你的那一刻起，我的世界就变得不一样了。</div>
+            <div class="progress"><div class="progress-bar" id="progress"></div></div>
+            <button class="btn" id="next">下一步</button>
+        </div>
+        <div class="card success" id="success">
+            <div class="icon">❤️</div>
+            <div class="success-title">表白成功！</div>
+            <div class="success-content">谢谢你接受我的心意！我会好好珍惜这份感情！</div>
+            <button class="btn" id="restart">重新开始</button>
+        </div>
+    </div>
+    <script>
+        var steps=[{title:"遇见你",content:"从第一次见到你的那一刻起，我的世界就变得不一样了。",icon:"⭐"},{title:"了解你",content:"每一次和你的对话都让我更加确信，你就是我想要的那个人。",icon:"💬"},{title:"喜欢你",content:"你的笑容、你的声音、你的善良，都深深地吸引着我。",icon:"❤️"},{title:"想和你在一起",content:"愿意给我一个机会，让我成为那个陪伴你的人吗？",icon:"🎁"}],currentStep=0,titleEl=document.getElementById('title'),contentEl=document.getElementById('content'),iconEl=document.getElementById('icon'),progressEl=document.getElementById('progress'),stepsDiv=document.getElementById('steps'),successDiv=document.getElementById('success'),nextBtn=document.getElementById('next'),restartBtn=document.getElementById('restart');
+        function updateStep(){var step=steps[currentStep];titleEl.innerHTML=step.title,contentEl.innerHTML=step.content,iconEl.innerHTML=step.icon,progressEl.style.width=(currentStep+1)/steps.length*100+"%"}
+        function nextStep(){currentStep<steps.length-1?(currentStep++,updateStep()):(stepsDiv.style.display="none",successDiv.style.display="block")}
+        function restart(){currentStep=0,successDiv.style.display="none",stepsDiv.style.display="block",updateStep()}
+        nextBtn.onclick=nextStep,restartBtn.onclick=restart,updateStep();
+    </script>
+</body>
+</html>
